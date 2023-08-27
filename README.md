@@ -27,5 +27,5 @@ Soutien
 
 Si vous souhaitez soutenir notre projet, vous pouvez faire un don aux adresses suivantes :
 
-    Matic : [Adresse Matic]
-    Ethereum (ETH) : [Adresse ETH]
+    Matic : 0x5c2eabcb75b6138bdfe39fd9a0dae0716c6426bc
+    Ethereum (ETH) : 0x5c2eabcb75b6138bdfe39fd9a0dae0716c6426bc
