@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription et Connexion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="design/styles.css">
+    <link rel="icon" href="design/favicon.ico" type="image/x-icon"> 
+
+    <style>
+
+        /* ************************* */
+    /* Page connexion index.html */
+    /* ************************* */
+
+    /* Styles pour le modal */
+    .modal_connection {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content_connection {
+        position: relative;
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        text-align: center;
+    }
+
+    .success {
+        color: green;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .fas.fa-times {
+        position: absolute; /* Changez de relative à absolute */
+        color: red;
+        z-index: 1010;
+        top: 10px;   /* Ajustez la position verticale */
+    right: 10px;  /* Ajustez la position horizontale */
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Formulaire d'inscription -->
+        <section id="register">
+            <h2>Inscription</h2>
+            <form action="php/register.php" method="post" id="registerForm">
+                <label for="registerEmail">Email:</label>
+                <input type="email" name="email" id="registerEmail" required>
+                <br>
+                <label for="registerPassword">Mot de passe:</label>
+                <input type="password" name="password" id="registerPassword" required>
+                <br>
+                <input type="submit" value="Inscription">
+            </form>
+        </section>
+
+        <!-- Formulaire de connexion -->
+        <section id="login">
+            <h2>Connexion</h2>
+            <form action="php/connection.php" method="post" id="loginForm">
+                <label for="loginEmail">Email:</label>
+                <input type="email" name="email" id="loginEmail" required>
+                <br>
+                <label for="loginPassword">Mot de passe:</label>
+                <input type="password" name="password" id="loginPassword" required>
+                <br>
+                <input type="submit" value="Connexion">
+            </form>
+            <a href="reset_password.html" id="forgotPasswordLink">Mot de passe oublié ?</a>
+        </section>
+    </div>
+
+    <div id="notificationModalConnexion" class="modal_connection">
+        <div class="modal-content_connection" id="notificationContentConnexion">
+            <span class="fas fa-times" onclick="closeModalConnexion()" style="cursor:pointer"></span>
+            <p id="modalMessage_connection"></p>
+        </div>
+    </div>
+    
+    
+    <script>
+
+        function closeModalConnexion() {
+            const modal = document.getElementById("notificationModalConnexion");
+            modal.style.display = "none";
+        }
+
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const registered = urlParams.get('registered');
+            const emailExists = urlParams.get('emailExists');
+            const emailOrPass = urlParams.get('emailOrPass');
+            const toManyTime = urlParams.get('toManyTime');
+            const invalidEmail = urlParams.get('invalidEmail');
+    
+            const modal = document.getElementById("notificationModalConnexion");
+            const modalContent = document.getElementById("modalMessage_connection");
+    
+            function showModalConnexion(message, type) {
+                modalContent.innerText = message;
+                modalContent.classList.add(type);
+                modal.style.display = "block";
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    modalContent.classList.remove(type);
+                }, 4000);
+            }
+    
+            if (registered === 'true') {
+                showModalConnexion("Inscription réussie! \n Vous pouvez maintenant vous connecter.", "success");
+            } else if (emailExists === 'true') {
+                showModalConnexion("Cet email est déjà enregistré! \nEssayez de vous connecter ou de réinitialiser votre mot de passe.", "error");
+            }
+            else if (emailOrPass === 'false') {
+                showModalConnexion("Email ou mot de passe incorrecte. \nVeuillez réessayer.", "error");
+            }
+            else if (toManyTime === 'false') {
+                showModalConnexion("Trop de tentative infructueuse. \nVeuillez réessayer dans une heures.", "error");
+            }
+            else if (invalidEmail === 'false') {
+                showModalConnexion("email inconnu. \nVeuillez vous enregistrer.", "error");
+            }
+            
+            // Supprimez les paramètres GET de l'URL sans recharger la page
+            history.replaceState(null, null, location.pathname);
+
+            // Fermer le modal lorsque l'utilisateur clique en dehors du contenu du modal
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

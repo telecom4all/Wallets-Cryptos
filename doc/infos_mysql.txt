@@ -1,0 +1,16 @@
+-- Création de la base de données "Wallets"
+CREATE DATABASE Wallets;
+
+-- Utilisation de la base de données "Wallets"
+USE Wallets;
+
+-- Création de la table "global"
+CREATE TABLE global (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    uuid CHAR(16) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    code_reset VARCHAR(255) UNIQUE NOT NULL
+    
+);
+
+------------------------------
