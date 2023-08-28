@@ -206,7 +206,7 @@ async function showTransactionPopup(crypto){
         crypto.transactions.forEach(transaction => {
             
             const row = tableBody.insertRow();
-            row.insertCell().textContent = transaction.date;
+            row.insertCell().textContent = convertirFormatDateISO8601ToDateEurope(transaction.date);
             row.insertCell().textContent = transaction.Invest;
             row.insertCell().textContent = transaction.supply;
             row.insertCell().textContent = transaction.purchasePrice;
