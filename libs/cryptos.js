@@ -25,8 +25,8 @@ async function loadListCryptos(){
 
 async function addCrypto(){
     // 1. Récupérez les valeurs des champs d'entrée
-    const cryptoId = document.getElementById('crypto-id-add').value;
-    const cryptoName = document.getElementById('crypto-name-add').value;
+    const cryptoId = document.getElementById('crypto-id-add').value.trim();
+    const cryptoName = document.getElementById('crypto-name-add').value.trim();
 
     // Vérifiez si les champs ne sont pas vides
     if (!cryptoId || !cryptoName) {

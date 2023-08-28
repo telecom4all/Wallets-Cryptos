@@ -6,6 +6,7 @@
 ## 🛠 Prérequis
 - Serveur web supportant **PHP** (ex : Apache, Nginx)
 - Base de données (ex : MySQL, MariaDB)
+- Une base de données MySQL configurée selon la structure fournie dans le fichier `docs/infos_mysql.txt`.
 
 ## 🚀 Installation et configuration
 1. **Clonez le dépôt** GitHub ou téléchargez l'archive ZIP.
@@ -19,11 +20,13 @@
 
 📖 Utilisation
 
-    Inscription : Accédez à index.html et remplissez le formulaire d'inscription.
-    Connexion : Utilisez vos identifiants pour vous connecter.
-    Ajout de cryptos : Une fois connecté, utilisez la section "Ajout cryptos" pour ajouter de nouveaux actifs cryptographiques à votre portefeuille.
-    Ajout de transactions : Utilisez la section "Ajout Transaction" pour ajouter de nouvelles transactions.
-    Historique : Consultez l'historique de vos transactions et de votre portefeuille pour chaque crypto.
+    - Inscription : Accédez à index.html et remplissez le formulaire d'inscription.
+    - Connexion : Utilisez vos identifiants pour vous connecter.
+    - Ajout de cryptos : Une fois connecté, utilisez la section "Ajout cryptos" pour ajouter de nouveaux actifs cryptographiques à votre portefeuille.
+    - Utilisez l'icône de recherche à côté du champ nom crypto pour rechercher le bon ID de la crypto sur CoinGecko.
+    - Ajout de transactions : Utilisez la section "Ajout Transaction" pour ajouter de nouvelles transactions.
+    - Historique : Consultez l'historique de vos transactions et de votre portefeuille pour chaque crypto.
+    - Les cryptos et les transactions peuvent être sauvegardés dans un fichier pour une restauration ultérieure à l'aide des bouttons Sauvegarde et Restauration
 
 💖 Soutien
 
