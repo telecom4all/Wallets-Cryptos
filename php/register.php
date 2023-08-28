@@ -17,8 +17,17 @@ if ($result->num_rows > 0) {
 }
 
 // Génération de l'UUID
-$uuid = bin2hex(random_bytes(5)); // Génère un UUID de 10 caractères
+//$uuid = bin2hex(random_bytes(5)); // Génère un UUID de 10 caractères
+// Génération de l'UUID et vérification de son unicité
+do {
+    $uuid = bin2hex(random_bytes(5)); // Génère un UUID de 10 caractères
 
+    // Vérification si l'UUID existe déjà
+    $stmt = $conn->prepare("SELECT uuid FROM global WHERE uuid = ?");
+    $stmt->bind_param("s", $uuid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} while ($result->num_rows > 0);
 
 // Cryptage du mot de passe
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);

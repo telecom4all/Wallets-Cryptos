@@ -12,13 +12,19 @@ let listCryptos;
 let listTransactionsdb;
 let listTransactionAllCryptos;
 
+let listAllCoinDispo;
+
 window.onload = async function() {
-    // affichage de l'email dans le menu profile
-    displayEmail()
+    // affichage de les infos perso dans le menu profile
+    displayPersonnalInfos();
 
     //on repli l'accordéon au démarage de la page
     accordeonAction("fermer");
 
+    //on va chercher la liste des infos de tout les token sur coingueco s'il ne sont pas en cache
+    listAllCoinDispo = await getAllCoins();
+    console.log(listAllCoinDispo)
+    
     //charger la liste des crypto depus la db
     listCryptos = await loadListCryptos();
     if (listCryptos && listCryptos != false) {
