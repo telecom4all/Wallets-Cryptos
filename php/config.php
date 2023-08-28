@@ -1,8 +1,8 @@
 <?php
 $server = "localhost";
-$username = "wallets";
-$password = "6G9nf09f18BHO1IB";
-$database = "Wallets";
+$username = "";
+$password = "";
+$database = "";
 
 // Connexion à la base de données
 $conn = new mysqli($server, $username, $password, $database);
